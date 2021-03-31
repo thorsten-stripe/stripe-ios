@@ -1029,11 +1029,15 @@ public class STPPaymentHandler: NSObject, SFSafariViewControllerDelegate, STPURL
               let requiresAction: Bool = self._handlePaymentIntentStatus(forAction: currentAction)
               if requiresAction {
                 // If the status is still RequiresAction, the user exited from the redirect before the
-                // payment intent was updated. Consider it a cancel
-                self._markChallengeCanceled(withCompletion: { _, _ in
-                  // We don't forward cancelation errors
-                  currentAction.complete(with: STPPaymentHandlerActionStatus.canceled, error: nil)
-                })
+                // payment intent was updated. Consider it a cancel, unless it's a voucher method.
+                if self._isPaymentIntentNextActionVoucherBased(nextAction: retrievedPaymentIntent!.nextAction) {
+                  currentAction.complete(with: STPPaymentHandlerActionStatus.succeeded, error: nil)
+                } else {
+                  self._markChallengeCanceled(withCompletion: { _, _ in
+                    // We don't forward cancelation errors
+                    currentAction.complete(with: STPPaymentHandlerActionStatus.canceled, error: nil)
+                  })
+                }
               }
             }
           }
