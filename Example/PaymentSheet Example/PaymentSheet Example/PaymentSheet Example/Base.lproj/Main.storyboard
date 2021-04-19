@@ -620,7 +620,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="I5a-af-49Q">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="198"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15P-5T-kpB" userLabel="Cart Row">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15P-5T-kpB" userLabel="Cart Row" customClass="STPPaymentCardTextField" customModule="Stripe">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="75"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Kuy-VX-c5R">

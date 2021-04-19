@@ -10,7 +10,7 @@
 
 
 
-static NSString * const STPTestingBackendURL = @"https://floating-citadel-20318.herokuapp.com/";
+static NSString * const STPTestingBackendURL = @"http://localhost:4567/";
 // staging backend
 // static NSString * const STPTestingBackendURL = @"https://ancient-headland-10388.herokuapp.com/";
 

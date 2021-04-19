@@ -123,6 +123,9 @@
 		3111C714252E2A5200207E32 /* STPApplePayContextTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3111C401252BC79F00207E32 /* STPApplePayContextTest.swift */; };
 		3111C71D252E394C00207E32 /* STPPaymentContextApplePayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3111C3FD252BC79E00207E32 /* STPPaymentContextApplePayTest.swift */; };
 		3111C722252E3EC200207E32 /* STPShippingAddressViewControllerLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3111C3C9252BC79500207E32 /* STPShippingAddressViewControllerLocalizationTests.swift */; };
+		3118D57826260A3100E1A3BD /* STPPaymentMethodWeChatPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118D57626260A3100E1A3BD /* STPPaymentMethodWeChatPay.swift */; };
+		3118D57926260A3100E1A3BD /* STPPaymentMethodWeChatPayParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118D57726260A3100E1A3BD /* STPPaymentMethodWeChatPayParams.swift */; };
+		3118D57E26265A4700E1A3BD /* STPConfirmWeChatPayOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118D57D26265A4600E1A3BD /* STPConfirmWeChatPayOptions.swift */; };
 		31281BC325254F8E00591A95 /* STPPaymentCardTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317ABD5125117C9500CC59EF /* STPPaymentCardTextFieldCell.swift */; };
 		31281BC9252551AA00591A95 /* STPPaymentCardTextFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317ABD3725117C9300CC59EF /* STPPaymentCardTextFieldViewModel.swift */; };
 		31281BCD2525598200591A95 /* STPPaymentConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317ABD8A25117C9800CC59EF /* STPPaymentConfiguration.swift */; };
@@ -788,6 +791,9 @@
 		3111C413252BC7A200207E32 /* STPPaymentOptionsViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STPPaymentOptionsViewControllerTest.swift; sourceTree = "<group>"; };
 		3111C415252BC7A200207E32 /* NSMutableURLRequest+StripeTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableURLRequest+StripeTest.swift"; sourceTree = "<group>"; };
 		3113D8C0250AA97700C495F1 /* Stripe.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = Stripe.modulemap; sourceTree = "<group>"; };
+		3118D57626260A3100E1A3BD /* STPPaymentMethodWeChatPay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STPPaymentMethodWeChatPay.swift; sourceTree = "<group>"; };
+		3118D57726260A3100E1A3BD /* STPPaymentMethodWeChatPayParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STPPaymentMethodWeChatPayParams.swift; sourceTree = "<group>"; };
+		3118D57D26265A4600E1A3BD /* STPConfirmWeChatPayOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STPConfirmWeChatPayOptions.swift; sourceTree = "<group>"; };
 		3128855525ED9B0F00D54C33 /* form_error_icon_dark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "form_error_icon_dark@3x.png"; sourceTree = "<group>"; };
 		3128855625ED9B0F00D54C33 /* chevronDown@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chevronDown@3x.png"; sourceTree = "<group>"; };
 		3128855825ED9B1000D54C33 /* card_unknown_icon_dark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_unknown_icon_dark@3x.png"; sourceTree = "<group>"; };
@@ -1688,6 +1694,7 @@
 				B63A414925F97AD700929729 /* STPConfirmBLIKOptions.swift */,
 				317ABD8F25117C9900CC59EF /* STPConfirmCardOptions.swift */,
 				317ABD9225117C9900CC59EF /* STPConfirmPaymentMethodOptions.swift */,
+				3118D57D26265A4600E1A3BD /* STPConfirmWeChatPayOptions.swift */,
 				317ABDF425117C9E00CC59EF /* STPPaymentIntent.swift */,
 				317ABDEB25117C9E00CC59EF /* STPPaymentIntentAction.swift */,
 				317ABD3225117C9300CC59EF /* STPPaymentIntentActionRedirectToURL.swift */,
@@ -1941,6 +1948,8 @@
 				317ABD2B25117C9300CC59EF /* STPPaymentMethodThreeDSecureUsage.swift */,
 				8F5ED78225552296003BE002 /* STPPaymentMethodUPI.swift */,
 				8F5ED77825551F2D003BE002 /* STPPaymentMethodUPIParams.swift */,
+				3118D57626260A3100E1A3BD /* STPPaymentMethodWeChatPay.swift */,
+				3118D57726260A3100E1A3BD /* STPPaymentMethodWeChatPayParams.swift */,
 			);
 			name = Types;
 			sourceTree = "<group>";
@@ -3122,6 +3131,7 @@
 				31D4D6962512EE0100809066 /* UIViewController+Stripe_ParentViewController.swift in Sources */,
 				31281BC325254F8E00591A95 /* STPPaymentCardTextFieldCell.swift in Sources */,
 				31F2E875252403AD004D4B5E /* STPRedirectContext.swift in Sources */,
+				3118D57926260A3100E1A3BD /* STPPaymentMethodWeChatPayParams.swift in Sources */,
 				31D4D68A2512EC6300809066 /* UIView+Stripe_FirstResponder.swift in Sources */,
 				31D4D6742512E69700809066 /* UIBarButtonItem+Stripe.swift in Sources */,
 				3176C220251A679600300ADE /* STPKlarnaLineItem.swift in Sources */,
@@ -3290,6 +3300,7 @@
 				B6E40EAC254253E400A5BABD /* DimmedView.swift in Sources */,
 				B64519DD25144184006BF25E /* STPPaymentMethodBancontactParams.swift in Sources */,
 				36ADAE0E2523A41C00302DFB /* STPPaymentIntentSourceActionAuthorizeWithURL.swift in Sources */,
+				3118D57826260A3100E1A3BD /* STPPaymentMethodWeChatPay.swift in Sources */,
 				366ECD30254B4AFA0082868E /* STPCardNumberInputTextFieldFormatter.swift in Sources */,
 				36F61205254C888F006656BD /* SavedPaymentOptionsViewController.swift in Sources */,
 				B672438B252614F0002E1AAF /* STPSetupIntentLastSetupError.swift in Sources */,
@@ -3354,6 +3365,7 @@
 				B6D9CEBE2515245500AAD424 /* STPPaymentContextAmountModel.swift in Sources */,
 				366ECD3C254B4AFA0082868E /* STPInputTextFieldFormatter.swift in Sources */,
 				3194908425143A5A00AD8F0B /* STPBundleLocator.swift in Sources */,
+				3118D57E26265A4700E1A3BD /* STPConfirmWeChatPayOptions.swift in Sources */,
 				B6724305252419FD002E1AAF /* STPPaymentMethodGiropayParams.swift in Sources */,
 				3111BE802513057C00288D28 /* STPMultiFormTextField.swift in Sources */,
 				3111C3392526C24F00207E32 /* STPDispatchFunctions.swift in Sources */,

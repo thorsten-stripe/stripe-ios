@@ -19,6 +19,8 @@ struct PaymentMethodView: View {
         if let paymentIntent = model.paymentIntentParams {
           Button("Buy") {
             paymentIntent.paymentMethodParams = integrationMethod.defaultPaymentMethodParams
+            paymentIntent.paymentMethodOptions = STPConfirmPaymentMethodOptions()
+            paymentIntent.paymentMethodOptions?.weChatPayOptions = STPConfirmWeChatPayOptions(appId: "test")
             isConfirmingPayment = true
           }.paymentConfirmationSheet(isConfirmingPayment: $isConfirmingPayment,
                                      paymentIntentParams: paymentIntent,

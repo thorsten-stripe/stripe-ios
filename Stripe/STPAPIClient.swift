@@ -66,7 +66,7 @@ public class STPAPIClient: NSObject {
     private var sourcePollers: [String: NSObject]?
     private var sourcePollersQueue: DispatchQueue?
     /// A set of beta headers to add to Stripe API requests e.g. `Set(["alipay_beta=v1"])`
-    var betas: Set<String>?
+    public var betas: Set<String>?
 
     /// Returns `true` if `publishableKey` is actually a user key, `false` otherwise.
     private var publishableKeyIsUserKey: Bool {

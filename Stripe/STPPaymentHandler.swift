@@ -541,6 +541,7 @@ public class STPPaymentHandler: NSObject, SFSafariViewControllerDelegate, STPURL
             .OXXO,
             .grabPay,
             .afterpayClearpay,
+            .weChatPay,
             .blik:
             return false
 

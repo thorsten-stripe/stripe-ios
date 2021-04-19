@@ -19,7 +19,7 @@ class STPE2ETest: XCTestCase {
     }
 
     class E2EBackend {
-        static let backendAPIURL = URL(string: "https://stp-e2e.glitch.me")!
+        static let backendAPIURL = URL(string: "http://localhost:4567/e2e/")!
 
         func createPaymentIntent(
             completion: @escaping (STPPaymentIntentParams, E2EExpectation) -> Void

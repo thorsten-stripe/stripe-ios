@@ -26,6 +26,7 @@ enum IntegrationMethod : String, CaseIterable {
     case grabpay = "GrabPay"
     case oxxo = "OXXO"
     case afterpay = "Afterpay Clearpay"
+    case weChatPay = "WeChat Pay"
 }
 
 // MARK: IntegrationMethod PaymentMethod/Sources Params
@@ -91,6 +92,8 @@ extension IntegrationMethod {
             cardParams.expMonth = 12
             cardParams.cvc = "123"
               return STPPaymentMethodParams(card: cardParams, billingDetails: nil, metadata: nil)
+          case .weChatPay:
+            return STPPaymentMethodParams(weChatPay: STPPaymentMethodWeChatPayParams(), billingDetails: nil, metadata: nil)
           case .applePay:
               assertionFailure("Not supported by PaymentMethods")
               return STPPaymentMethodParams()
