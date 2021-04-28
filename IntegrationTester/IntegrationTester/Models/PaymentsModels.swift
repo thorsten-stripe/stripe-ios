@@ -38,7 +38,9 @@ class MyPIModel : ObservableObject {
     STPPaymentHandler.shared().simulateAppToAppRedirect = true
 
     BackendModel.shared.fetchPaymentIntent(integrationMethod: integrationMethod) { pip in
-        pip?.returnURL = BackendModel.returnURL
+        if self.integrationMethod != .weChatPay {
+            pip?.returnURL = BackendModel.returnURL
+        }
         self.paymentIntentParams = pip
     }
   }

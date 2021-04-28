@@ -816,7 +816,22 @@ public class STPPaymentHandler: NSObject, SFSafariViewControllerDelegate, STPURL
                             "STPIntentAction": authenticationAction.description
                         ]))
             }
-
+            
+        case .wechatPayRedirectToApp:
+            if let wechatPayRedirectToApp = authenticationAction.wechatPayRedirectToApp {
+                _handleRedirect(
+                    to: wechatPayRedirectToApp.nativeURL, fallbackURL: nil,
+                    return: nil)
+            } else {
+                currentAction.complete(
+                    with: STPPaymentHandlerActionStatus.failed,
+                    error: _error(
+                        for: .unsupportedAuthenticationErrorCode,
+                        userInfo: [
+                            "STPIntentAction": authenticationAction.description
+                        ]))
+            }
+            
         case .OXXODisplayDetails:
             if let hostedVoucherURL = authenticationAction.oxxoDisplayDetails?.hostedVoucherURL {
                 self._handleRedirect(to: hostedVoucherURL, withReturn: nil)
@@ -1170,7 +1185,7 @@ public class STPPaymentHandler: NSObject, SFSafariViewControllerDelegate, STPURL
     /// This method:
     /// 1. Redirects to an app using url
     /// 2. Open fallbackURL in a webview if 1) fails
-    func _handleRedirect(to nativeURL: URL?, fallbackURL: URL, return returnURL: URL?) {
+    func _handleRedirect(to nativeURL: URL?, fallbackURL: URL?, return returnURL: URL?) {
         var url = nativeURL
         guard let currentAction = currentAction else {
             assert(false, "Calling _handleRedirect without a currentAction")
@@ -1199,17 +1214,27 @@ public class STPPaymentHandler: NSObject, SFSafariViewControllerDelegate, STPURL
                     return
                 }
 
-                let safariViewController = SFSafariViewController(url: fallbackURL)
-                safariViewController.modalPresentationStyle = .overFullScreen
-                safariViewController.dismissButtonStyle = .close
-                if context.responds(
-                    to: #selector(STPAuthenticationContext.configureSafariViewController(_:)))
-                {
-                    context.configureSafariViewController?(safariViewController)
+                if let fallbackURL = fallbackURL {
+                    let safariViewController = SFSafariViewController(url: fallbackURL)
+                    safariViewController.modalPresentationStyle = .overFullScreen
+                    safariViewController.dismissButtonStyle = .close
+                    if context.responds(
+                        to: #selector(STPAuthenticationContext.configureSafariViewController(_:)))
+                    {
+                        context.configureSafariViewController?(safariViewController)
+                    }
+                    safariViewController.delegate = self
+                    self.safariViewController = safariViewController
+                    presentingViewController.present(safariViewController, animated: true)
+                } else {
+                    currentAction.complete(
+                        with: STPPaymentHandlerActionStatus.failed,
+                        error: self._error(
+                            for: .unsupportedAuthenticationErrorCode,
+                            userInfo: [
+                                "STPIntentAction": currentAction.description
+                            ]))
                 }
-                safariViewController.delegate = self
-                self.safariViewController = safariViewController
-                presentingViewController.present(safariViewController, animated: true)
             }
             if context.responds(to: #selector(STPAuthenticationContext.prepare(forPresentation:))) {
                 context.prepare?(forPresentation: doChallenge)
@@ -1360,7 +1385,7 @@ public class STPPaymentHandler: NSObject, SFSafariViewControllerDelegate, STPURL
             threeDSSourceID = nextAction.redirectToURL?.threeDSSourceID
         case .useStripeSDK:
             threeDSSourceID = nextAction.useStripeSDK?.threeDSSourceID
-        case .OXXODisplayDetails, .alipayHandleRedirect, .unknown, .BLIKAuthorize:
+        case .OXXODisplayDetails, .alipayHandleRedirect, .unknown, .BLIKAuthorize, .wechatPayRedirectToApp:
             break
         @unknown default:
             fatalError()
