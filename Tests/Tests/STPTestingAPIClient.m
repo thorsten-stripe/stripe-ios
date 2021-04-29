@@ -10,7 +10,7 @@
 
 
 
-static NSString * const STPTestingBackendURL = @"http://localhost:4567/";
+static NSString * const STPTestingBackendURL = @"https://stp-mobile-ci-test-backend-e1b3.stripedemos.com/";
 // staging backend
 // static NSString * const STPTestingBackendURL = @"https://ancient-headland-10388.herokuapp.com/";
 
