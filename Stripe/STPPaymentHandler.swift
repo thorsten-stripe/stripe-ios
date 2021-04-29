@@ -30,6 +30,10 @@ import SafariServices
     @objc(STPPaymentHandlerUnsupportedAuthenticationErrorCode)
     case unsupportedAuthenticationErrorCode
 
+    /// Indicates that the action requires an authentication app, but either the app is not installed or the request to switch to the app was denied.
+    @objc(STPPaymentHandlerRequiredAppNotAvailableErrorCode)
+    case requiredAppNotAvailable
+    
     /// Attach a payment method to the PaymentIntent or SetupIntent before using `STPPaymentHandler`.
     @objc(STPPaymentHandlerRequiresPaymentMethodErrorCode)
     case requiresPaymentMethodErrorCode
@@ -817,10 +821,10 @@ public class STPPaymentHandler: NSObject, SFSafariViewControllerDelegate, STPURL
                         ]))
             }
             
-        case .wechatPayRedirectToApp:
-            if let wechatPayRedirectToApp = authenticationAction.wechatPayRedirectToApp {
+        case .weChatPayRedirectToApp:
+            if let weChatPayRedirectToApp = authenticationAction.weChatPayRedirectToApp {
                 _handleRedirect(
-                    to: wechatPayRedirectToApp.nativeURL, fallbackURL: nil,
+                    to: weChatPayRedirectToApp.nativeURL, fallbackURL: nil,
                     return: nil)
             } else {
                 currentAction.complete(
@@ -1230,7 +1234,7 @@ public class STPPaymentHandler: NSObject, SFSafariViewControllerDelegate, STPURL
                     currentAction.complete(
                         with: STPPaymentHandlerActionStatus.failed,
                         error: self._error(
-                            for: .unsupportedAuthenticationErrorCode,
+                            for: .requiredAppNotAvailable,
                             userInfo: [
                                 "STPIntentAction": currentAction.description
                             ]))
@@ -1385,7 +1389,7 @@ public class STPPaymentHandler: NSObject, SFSafariViewControllerDelegate, STPURL
             threeDSSourceID = nextAction.redirectToURL?.threeDSSourceID
         case .useStripeSDK:
             threeDSSourceID = nextAction.useStripeSDK?.threeDSSourceID
-        case .OXXODisplayDetails, .alipayHandleRedirect, .unknown, .BLIKAuthorize, .wechatPayRedirectToApp:
+        case .OXXODisplayDetails, .alipayHandleRedirect, .unknown, .BLIKAuthorize, .weChatPayRedirectToApp:
             break
         @unknown default:
             fatalError()
@@ -1510,6 +1514,12 @@ public class STPPaymentHandler: NSObject, SFSafariViewControllerDelegate, STPURL
             userInfo[STPError.errorMessageKey] =
                 userInfo[STPError.errorMessageKey]
                 ?? "The SDK doesn't recognize the PaymentIntent action type."
+            userInfo[NSLocalizedDescriptionKey] = NSError.stp_unexpectedErrorMessage()
+
+        case .requiredAppNotAvailable:
+            userInfo[STPError.errorMessageKey] =
+                userInfo[STPError.errorMessageKey]
+                ?? "This PaymentIntent action requires an app, but the app is not either not installed or the request to open the app was denied."
             userInfo[NSLocalizedDescriptionKey] = NSError.stp_unexpectedErrorMessage()
 
         // Programming errors

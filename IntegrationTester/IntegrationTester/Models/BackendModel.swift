@@ -18,12 +18,6 @@ class BackendModel {
     public static let shared = BackendModel()
     
     func fetchPaymentIntent(integrationMethod: IntegrationMethod = .card, completion: @escaping (STPPaymentIntentParams?) -> Void) {
-        // TODO: Move this somewhere more reasonable
-        if integrationMethod == .weChatPay {
-            STPAPIClient.shared.betas = ["wechat_pay_beta=v1"]
-        } else {
-            STPAPIClient.shared.betas = []
-        }
         let params = ["integration_method": integrationMethod.rawValue]
         getAPI(method: "create_pi", params: params) { (json) in
             guard let paymentIntentClientSecret = json["paymentIntent"] as? String else {

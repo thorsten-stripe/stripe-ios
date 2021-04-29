@@ -66,7 +66,8 @@ public class STPAPIClient: NSObject {
     private var sourcePollers: [String: NSObject]?
     private var sourcePollersQueue: DispatchQueue?
     /// A set of beta headers to add to Stripe API requests e.g. `Set(["alipay_beta=v1"])`
-    public var betas: Set<String>?
+    var betas: Set<String>? = ["wechat_pay_beta=v1"]
+    // TODO: Remove this before merging the WeChat Pay beta branch
 
     /// Returns `true` if `publishableKey` is actually a user key, `false` otherwise.
     private var publishableKeyIsUserKey: Bool {

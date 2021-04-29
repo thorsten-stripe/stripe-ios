@@ -44,7 +44,7 @@ import Foundation
     case BLIKAuthorize
     
     /// Contains instructions for authenticating a payment by redirecting your customer to the WeChat Pay App.
-    case wechatPayRedirectToApp
+    case weChatPayRedirectToApp
 
     /// Parse the string and return the correct `STPIntentActionType`,
     /// or `STPIntentActionTypeUnknown` if it's unrecognized by this version of the SDK.
@@ -60,7 +60,7 @@ import Foundation
         case "alipay_handle_redirect":
             self = .alipayHandleRedirect
         case "wechat_pay_redirect_to_ios_app":
-            self = .wechatPayRedirectToApp
+            self = .weChatPayRedirectToApp
         case "blik_authorize":
             self = .BLIKAuthorize
         default:
@@ -83,7 +83,7 @@ import Foundation
             return "alipay_handle_redirect"
         case .BLIKAuthorize:
             return "blik_authorize"
-        case .wechatPayRedirectToApp:
+        case .weChatPayRedirectToApp:
             return "wechat_pay_redirect_to_ios_app"
         case .unknown:
             break
@@ -115,7 +115,7 @@ public class STPIntentAction: NSObject {
     @objc public let alipayHandleRedirect: STPIntentActionAlipayHandleRedirect?
 
     /// Contains instructions for authenticating a payment by redirecting your customer to the WeChat Pay app.
-    @objc public let wechatPayRedirectToApp: STPIntentActionWechatPayRedirectToApp?
+    @objc public let weChatPayRedirectToApp: STPIntentActionWechatPayRedirectToApp?
     
     internal let useStripeSDK: STPIntentActionUseStripeSDK?
 
@@ -149,9 +149,9 @@ public class STPIntentAction: NSObject {
             if let alipayHandleRedirect = alipayHandleRedirect {
                 props.append("alipayHandleRedirect = \(alipayHandleRedirect)")
             }
-        case .wechatPayRedirectToApp:
-            if let wechatPayRedirectToApp = wechatPayRedirectToApp {
-                props.append("wechatPayRedirectToApp = \(wechatPayRedirectToApp)")
+        case .weChatPayRedirectToApp:
+            if let weChatPayRedirectToApp = weChatPayRedirectToApp {
+                props.append("weChatPayRedirectToApp = \(weChatPayRedirectToApp)")
             }
         case .BLIKAuthorize:
             break // no additional details
@@ -169,7 +169,7 @@ public class STPIntentAction: NSObject {
         alipayHandleRedirect: STPIntentActionAlipayHandleRedirect?,
         useStripeSDK: STPIntentActionUseStripeSDK?,
         oxxoDisplayDetails: STPIntentActionOXXODisplayDetails?,
-        wechatPayRedirectToApp: STPIntentActionWechatPayRedirectToApp?,
+        weChatPayRedirectToApp: STPIntentActionWechatPayRedirectToApp?,
         allResponseFields: [AnyHashable: Any]
     ) {
         self.type = type
@@ -177,7 +177,7 @@ public class STPIntentAction: NSObject {
         self.alipayHandleRedirect = alipayHandleRedirect
         self.useStripeSDK = useStripeSDK
         self.oxxoDisplayDetails = oxxoDisplayDetails
-        self.wechatPayRedirectToApp = wechatPayRedirectToApp
+        self.weChatPayRedirectToApp = weChatPayRedirectToApp
         self.allResponseFields = allResponseFields
         super.init()
     }
@@ -202,7 +202,7 @@ extension STPIntentAction: STPAPIResponseDecodable {
         var alipayHandleRedirect: STPIntentActionAlipayHandleRedirect?
         var useStripeSDK: STPIntentActionUseStripeSDK?
         var oxxoDisplayDetails: STPIntentActionOXXODisplayDetails?
-        var wechatPayRedirectToApp: STPIntentActionWechatPayRedirectToApp?
+        var weChatPayRedirectToApp: STPIntentActionWechatPayRedirectToApp?
 
         switch type {
         case .unknown:
@@ -231,10 +231,10 @@ extension STPIntentAction: STPAPIResponseDecodable {
             if alipayHandleRedirect == nil {
                 type = .unknown
             }
-        case .wechatPayRedirectToApp:
-            wechatPayRedirectToApp = STPIntentActionWechatPayRedirectToApp.decodedObject(
+        case .weChatPayRedirectToApp:
+            weChatPayRedirectToApp = STPIntentActionWechatPayRedirectToApp.decodedObject(
                 fromAPIResponse: dict["wechat_pay_redirect_to_ios_app"] as? [AnyHashable: Any])
-            if wechatPayRedirectToApp == nil {
+            if weChatPayRedirectToApp == nil {
                 type = .unknown
             }
         case .BLIKAuthorize:
@@ -247,7 +247,7 @@ extension STPIntentAction: STPAPIResponseDecodable {
             alipayHandleRedirect: alipayHandleRedirect,
             useStripeSDK: useStripeSDK,
             oxxoDisplayDetails: oxxoDisplayDetails,
-            wechatPayRedirectToApp: wechatPayRedirectToApp,
+            weChatPayRedirectToApp: weChatPayRedirectToApp,
             allResponseFields: dict) as? Self
     }
 

@@ -100,7 +100,20 @@ extension IntegrationMethod {
           }
       }
   }
-    
+
+    var defaultPaymentMethodOptions: STPConfirmPaymentMethodOptions? {
+        get {
+            switch self {
+            case .weChatPay:
+              let pmOptions = STPConfirmPaymentMethodOptions()
+                pmOptions.weChatPayOptions = STPConfirmWeChatPayOptions(appId: "wx65997d6307c3827d")
+                return pmOptions
+            default:
+                return nil
+            }
+        }
+    }
+
     static var defaultBillingDetails: STPPaymentMethodBillingDetails {
         get {
             let billingDetails = STPPaymentMethodBillingDetails()

@@ -22,13 +22,13 @@ class STPIntentActionWeChatPayRedirectToAppTest: XCTestCase {
             let json = try? JSONSerialization.jsonObject(
                 with: testJSONData, options: .allowFragments) as? [AnyHashable: Any],
             let nextAction = STPIntentAction.decodedObject(fromAPIResponse: json),
-            let wechatPayRedirectToApp = nextAction.wechatPayRedirectToApp
+            let weChatPayRedirectToApp = nextAction.weChatPayRedirectToApp
         else {
             XCTFail()
             return
         }
         XCTAssertEqual(
-            wechatPayRedirectToApp.nativeURL,
+            weChatPayRedirectToApp.nativeURL,
             URL(
                 string:
                     "weixin://app/value:wx12345a1234b1234c/pay/?package=Sign=WXPay&appid=wx12345a1234b1234c&partnerid=123456789&prepayid=wx12345a1234b1234c&noncestr=12345&timestamp=12345&sign=12341234"

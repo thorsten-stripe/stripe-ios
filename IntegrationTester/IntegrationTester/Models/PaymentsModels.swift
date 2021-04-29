@@ -38,9 +38,14 @@ class MyPIModel : ObservableObject {
     STPPaymentHandler.shared().simulateAppToAppRedirect = true
 
     BackendModel.shared.fetchPaymentIntent(integrationMethod: integrationMethod) { pip in
+        pip?.paymentMethodParams = self.integrationMethod.defaultPaymentMethodParams
+        pip?.paymentMethodOptions = self.integrationMethod.defaultPaymentMethodOptions
+        
+        // WeChat Pay is the only supported Payment Method that doesn't allow a returnURL.
         if self.integrationMethod != .weChatPay {
             pip?.returnURL = BackendModel.returnURL
         }
+        
         self.paymentIntentParams = pip
     }
   }
