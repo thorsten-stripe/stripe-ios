@@ -58,8 +58,16 @@ extension PaymentSheet {
         public var applePay: ApplePayConfiguration? = nil
 
         /// The amount of billing address details to collect
+        /// Intentionally non-public.
         /// @see BillingAddressCollection
         var billingAddressCollectionLevel: BillingAddressCollectionLevel = .automatic
+
+        /// The color of the Buy or Add button. Defaults to `.systemBlue`
+        public var primaryButtonColor: UIColor = .systemBlue {
+            didSet {
+                ConfirmButton.BuyButton.appearance().backgroundColor = primaryButtonColor
+            }
+        }
 
         private var styleRawValue: Int = 0  // SheetStyle.automatic.rawValue
         /// The color styling to use for PaymentSheet UI

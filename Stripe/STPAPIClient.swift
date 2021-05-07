@@ -17,7 +17,7 @@ import UIKit
 /// A client for making connections to the Stripe API.
 public class STPAPIClient: NSObject {
     /// The current version of this library.
-    @objc public static let STPSDKVersion = "21.4.0"
+    @objc public static let STPSDKVersion = "21.5.1"
 
     /// A shared singleton API client.
     /// By default, the SDK uses this instance to make API requests
@@ -409,7 +409,7 @@ extension STPAPIClient {
         request?.stp_setMultipartForm(data, boundary: boundary)
 
         if let request = request {
-            urlSession.dataTask(
+            urlSession.stp_performDataTask(
                 with: request as URLRequest,
                 completionHandler: { body, response, error in
                     var jsonDictionary: [AnyHashable: Any]?
@@ -438,7 +438,7 @@ extension STPAPIClient {
                         }
                     })
                 }
-            ).resume()
+            )
         }
     }
 }
@@ -529,22 +529,20 @@ extension STPAPIClient {
             })
     }
 
-    @discardableResult
     func retrieveSource(
         withId identifier: String,
         clientSecret secret: String,
         responseCompletion completion: @escaping (STPSource?, HTTPURLResponse?, Error?) -> Void
-    ) -> URLSessionDataTask {
+    ) {
         let endpoint = "\(APIEndpointSources)/\(identifier)"
         let parameters = [
             "client_secret": secret
         ]
-        return
-            (APIRequest<STPSource>.getWith(
-                self,
-                endpoint: endpoint,
-                parameters: parameters,
-                completion: completion))
+        APIRequest<STPSource>.getWith(
+            self,
+            endpoint: endpoint,
+            parameters: parameters,
+            completion: completion)
     }
 
     /// Starts polling the Source object with the given ID. For payment methods that require
@@ -1088,9 +1086,8 @@ extension STPAPIClient {
         request?.httpMethod = "GET"
 
         // Perform request
-        var task: URLSessionDataTask?
         if let request = request {
-            task = urlSession.dataTask(
+            urlSession.stp_performDataTask(
                 with: request as URLRequest,
                 completionHandler: { body, response, error in
                     guard let response = response, let body = body, error == nil else {
@@ -1106,7 +1103,6 @@ extension STPAPIClient {
                     }
                 })
         }
-        task?.resume()
     }
 }
 

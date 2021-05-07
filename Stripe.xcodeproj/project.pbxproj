@@ -160,8 +160,7 @@
 		3128858D25ED9B1000D54C33 /* card_unknown_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3128856B25ED9B1000D54C33 /* card_unknown_icon@3x.png */; };
 		3128858E25ED9B1000D54C33 /* apple_pay_mark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3128856C25ED9B1000D54C33 /* apple_pay_mark@3x.png */; };
 		3128858F25ED9B1000D54C33 /* icon-pm-card@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3128856E25ED9B1000D54C33 /* icon-pm-card@3x.png */; };
-		3128859025ED9B1000D54C33 /* icon-pm-ideal-color@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3128856F25ED9B1000D54C33 /* icon-pm-ideal-color@3x.png */; };
-		3128859125ED9B1000D54C33 /* icon-pm-alipay-color@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3128857025ED9B1000D54C33 /* icon-pm-alipay-color@3x.png */; };
+		3128859025ED9B1000D54C33 /* icon-pm-ideal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3128856F25ED9B1000D54C33 /* icon-pm-ideal@3x.png */; };
 		3128859225ED9B1000D54C33 /* form_error_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3128857125ED9B1000D54C33 /* form_error_icon@3x.png */; };
 		3128859325ED9B1000D54C33 /* icon_x@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3128857325ED9B1000D54C33 /* icon_x@3x.png */; };
 		3128859425ED9B1000D54C33 /* icon_lock@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3128857425ED9B1000D54C33 /* icon_lock@3x.png */; };
@@ -173,6 +172,7 @@
 		31319EE125B11C8A00C89E30 /* PaymentSheet+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31319EE025B11C8A00C89E30 /* PaymentSheet+SwiftUI.swift */; };
 		315E4B302639C86B00C1D955 /* STPIntentActionWeChatPayRedirectToApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E4B2F2639C86B00C1D955 /* STPIntentActionWeChatPayRedirectToApp.swift */; };
 		315E4B362639D80F00C1D955 /* STPIntentActionWeChatPayRedirectToAppTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E4B352639D80F00C1D955 /* STPIntentActionWeChatPayRedirectToAppTest.swift */; };
+		31686174260ED62A00BF1C69 /* URLSession+Retry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31686173260ED62A00BF1C69 /* URLSession+Retry.swift */; };
 		316F8110254109FC000A80B5 /* STPIntentActionOXXODisplayDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316F810F254109FC000A80B5 /* STPIntentActionOXXODisplayDetails.swift */; };
 		316F811625410B0E000A80B5 /* STPPaymentMethodOXXO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316F811525410B0E000A80B5 /* STPPaymentMethodOXXO.swift */; };
 		316F811A25410B12000A80B5 /* STPPaymentMethodOXXOParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316F811925410B12000A80B5 /* STPPaymentMethodOXXOParams.swift */; };
@@ -514,6 +514,7 @@
 		B65E74AC258930500080D9B3 /* STPAnalyticsClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65E74AB258930500080D9B3 /* STPAnalyticsClientTest.swift */; };
 		B660B312251D344700919002 /* STPAPIClient+ApplePay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317ABDCF25117C9C00CC59EF /* STPAPIClient+ApplePay.swift */; };
 		B6615A192564849100994B00 /* STPApplePayContext+PaymentSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6615A182564849100994B00 /* STPApplePayContext+PaymentSheet.swift */; };
+		B664617C262FA88900448B63 /* icon-pm-ideal_dark@3x.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B664617B262FA88900448B63 /* icon-pm-ideal_dark@3x.pdf */; };
 		B66B39B6223045EF006D1CAD /* CardPaymentMethod.json in Resources */ = {isa = PBXBuildFile; fileRef = B66B39B5223045EF006D1CAD /* CardPaymentMethod.json */; };
 		B66D5024222F5A27004A9210 /* STPPaymentMethodThreeDSecureUsageTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B66D5023222F5A27004A9210 /* STPPaymentMethodThreeDSecureUsageTest.m */; };
 		B66D5027222F8605004A9210 /* STPPaymentMethodCardChecksTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B66D5026222F8605004A9210 /* STPPaymentMethodCardChecksTest.m */; };
@@ -820,8 +821,7 @@
 		3128856B25ED9B1000D54C33 /* card_unknown_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_unknown_icon@3x.png"; sourceTree = "<group>"; };
 		3128856C25ED9B1000D54C33 /* apple_pay_mark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple_pay_mark@3x.png"; sourceTree = "<group>"; };
 		3128856E25ED9B1000D54C33 /* icon-pm-card@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-pm-card@3x.png"; sourceTree = "<group>"; };
-		3128856F25ED9B1000D54C33 /* icon-pm-ideal-color@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-pm-ideal-color@3x.png"; sourceTree = "<group>"; };
-		3128857025ED9B1000D54C33 /* icon-pm-alipay-color@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-pm-alipay-color@3x.png"; sourceTree = "<group>"; };
+		3128856F25ED9B1000D54C33 /* icon-pm-ideal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-pm-ideal@3x.png"; sourceTree = "<group>"; };
 		3128857125ED9B1000D54C33 /* form_error_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "form_error_icon@3x.png"; sourceTree = "<group>"; };
 		3128857325ED9B1000D54C33 /* icon_x@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_x@3x.png"; sourceTree = "<group>"; };
 		3128857425ED9B1000D54C33 /* icon_lock@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_lock@3x.png"; sourceTree = "<group>"; };
@@ -833,6 +833,7 @@
 		31319EE025B11C8A00C89E30 /* PaymentSheet+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaymentSheet+SwiftUI.swift"; sourceTree = "<group>"; };
 		315E4B2F2639C86B00C1D955 /* STPIntentActionWeChatPayRedirectToApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STPIntentActionWeChatPayRedirectToApp.swift; sourceTree = "<group>"; };
 		315E4B352639D80F00C1D955 /* STPIntentActionWeChatPayRedirectToAppTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STPIntentActionWeChatPayRedirectToAppTest.swift; sourceTree = "<group>"; };
+		31686173260ED62A00BF1C69 /* URLSession+Retry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Retry.swift"; sourceTree = "<group>"; };
 		316F810F254109FC000A80B5 /* STPIntentActionOXXODisplayDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STPIntentActionOXXODisplayDetails.swift; sourceTree = "<group>"; };
 		316F811525410B0E000A80B5 /* STPPaymentMethodOXXO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STPPaymentMethodOXXO.swift; sourceTree = "<group>"; };
 		316F811925410B12000A80B5 /* STPPaymentMethodOXXOParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STPPaymentMethodOXXOParams.swift; sourceTree = "<group>"; };
@@ -1281,6 +1282,7 @@
 		B65E749A258829550080D9B3 /* STPAnalyticsClient+PaymentSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "STPAnalyticsClient+PaymentSheet.swift"; sourceTree = "<group>"; };
 		B65E74AB258930500080D9B3 /* STPAnalyticsClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STPAnalyticsClientTest.swift; sourceTree = "<group>"; };
 		B6615A182564849100994B00 /* STPApplePayContext+PaymentSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "STPApplePayContext+PaymentSheet.swift"; sourceTree = "<group>"; };
+		B664617B262FA88900448B63 /* icon-pm-ideal_dark@3x.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icon-pm-ideal_dark@3x.pdf"; sourceTree = "<group>"; };
 		B66B39B5223045EF006D1CAD /* CardPaymentMethod.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CardPaymentMethod.json; sourceTree = "<group>"; };
 		B66D5023222F5A27004A9210 /* STPPaymentMethodThreeDSecureUsageTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STPPaymentMethodThreeDSecureUsageTest.m; sourceTree = "<group>"; };
 		B66D5026222F8605004A9210 /* STPPaymentMethodCardChecksTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STPPaymentMethodCardChecksTest.m; sourceTree = "<group>"; };
@@ -1602,8 +1604,8 @@
 			isa = PBXGroup;
 			children = (
 				3128856E25ED9B1000D54C33 /* icon-pm-card@3x.png */,
-				3128856F25ED9B1000D54C33 /* icon-pm-ideal-color@3x.png */,
-				3128857025ED9B1000D54C33 /* icon-pm-alipay-color@3x.png */,
+				3128856F25ED9B1000D54C33 /* icon-pm-ideal@3x.png */,
+				B664617B262FA88900448B63 /* icon-pm-ideal_dark@3x.pdf */,
 			);
 			path = PaymentMethods;
 			sourceTree = "<group>";
@@ -1997,6 +1999,7 @@
 				317ABDCC25117C9C00CC59EF /* STPCardValidator.swift */,
 				317ABDFD25117C9F00CC59EF /* STPError.swift */,
 				317ABDD725117C9D00CC59EF /* STPImageLibrary.swift */,
+				31686173260ED62A00BF1C69 /* URLSession+Retry.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -2815,7 +2818,7 @@
 				3180E1012592BB1800CE3D7E /* stp_bank_fpx_rhb@3x.png in Resources */,
 				3180E0CB2592B98900CE3D7E /* stp_card_discover_template@3x.png in Resources */,
 				3180E0BA2592B98900CE3D7E /* stp_card_diners@3x.png in Resources */,
-				3128859025ED9B1000D54C33 /* icon-pm-ideal-color@3x.png in Resources */,
+				3128859025ED9B1000D54C33 /* icon-pm-ideal@3x.png in Resources */,
 				3180E0C12592B98900CE3D7E /* stp_card_cvc@3x.png in Resources */,
 				3128858125ED9B1000D54C33 /* card_amex@3x.png in Resources */,
 				3180E0C22592B98900CE3D7E /* stp_card_form_front@3x.png in Resources */,
@@ -2836,6 +2839,7 @@
 				3128857825ED9B1000D54C33 /* form_error_icon_dark@3x.png in Resources */,
 				3180E0C82592B98900CE3D7E /* stp_card_unionpay_template_zh@3x.png in Resources */,
 				3180E1112592BB1800CE3D7E /* stp_bank_fpx_ambank@3x.png in Resources */,
+				B664617C262FA88900448B63 /* icon-pm-ideal_dark@3x.pdf in Resources */,
 				3128857B25ED9B1000D54C33 /* card_diners@3x.png in Resources */,
 				3180E1052592BB1800CE3D7E /* stp_bank_fpx_standard_chartered@3x.png in Resources */,
 				3128858E25ED9B1000D54C33 /* apple_pay_mark@3x.png in Resources */,
@@ -2872,7 +2876,6 @@
 				3128859425ED9B1000D54C33 /* icon_lock@3x.png in Resources */,
 				3128857925ED9B1000D54C33 /* chevronDown@3x.png in Resources */,
 				3180E1082592BB1800CE3D7E /* stp_bank_fpx_cimb@3x.png in Resources */,
-				3128859125ED9B1000D54C33 /* icon-pm-alipay-color@3x.png in Resources */,
 				3128858325ED9B1000D54C33 /* card_visa_dark@3x.png in Resources */,
 				3180E1092592BB1800CE3D7E /* stp_bank_fpx_public_bank@3x.png in Resources */,
 			);
@@ -3140,6 +3143,7 @@
 				31F2E875252403AD004D4B5E /* STPRedirectContext.swift in Sources */,
 				3118D57926260A3100E1A3BD /* STPPaymentMethodWeChatPayParams.swift in Sources */,
 				31D4D68A2512EC6300809066 /* UIView+Stripe_FirstResponder.swift in Sources */,
+				31686174260ED62A00BF1C69 /* URLSession+Retry.swift in Sources */,
 				31D4D6742512E69700809066 /* UIBarButtonItem+Stripe.swift in Sources */,
 				3176C220251A679600300ADE /* STPKlarnaLineItem.swift in Sources */,
 				B648F38F25E45A780009FB36 /* PaymentOption+Images.swift in Sources */,
