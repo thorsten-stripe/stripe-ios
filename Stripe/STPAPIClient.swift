@@ -68,6 +68,7 @@ public class STPAPIClient: NSObject {
     
     /// A list of available betas.
     public enum STPAPIBetas: String {
+        /// WeChat Pay Beta V1
         case weChatPayBetaV1 = "wechat_pay_beta=v1"
     }
     
