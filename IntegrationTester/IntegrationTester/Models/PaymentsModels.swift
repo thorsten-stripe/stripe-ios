@@ -46,6 +46,13 @@ class MyPIModel : ObservableObject {
             pip?.returnURL = BackendModel.returnURL
         }
         
+        // TODO: For now, we set a beta flag only for WeChat Pay. We should remove this before public release + before WeChat Pay is out of beta.
+        if self.integrationMethod == .weChatPay {
+            STPAPIClient.shared.betas = [.weChatPayBetaV1]
+        } else {
+            STPAPIClient.shared.betas = []
+        }
+        
         self.paymentIntentParams = pip
     }
   }

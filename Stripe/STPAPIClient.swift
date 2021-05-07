@@ -65,8 +65,25 @@ public class STPAPIClient: NSObject {
 
     private var sourcePollers: [String: NSObject]?
     private var sourcePollersQueue: DispatchQueue?
+    
+    /// A list of available betas.
+    public enum STPAPIBetas: String {
+        case weChatPayBetaV1 = "wechat_pay_beta=v1"
+    }
+    
+    /// A set of beta headers to add to Stripe API requests e.g. `Set([.wechatPayBetaV1])`
+    public var betas: Set<STPAPIBetas> = []
+    
     /// A set of beta headers to add to Stripe API requests e.g. `Set(["alipay_beta=v1"])`
-    var betas: Set<String>? = ["wechat_pay_beta=v1"]
+    var betaStrings: Set<String> {
+        get {
+            Set(betas.map { beta in
+                return beta.rawValue
+            })
+        }
+    }
+    
+    
     // TODO: Remove this before merging the WeChat Pay beta branch
 
     /// Returns `true` if `publishableKey` is actually a user key, `false` otherwise.
@@ -125,10 +142,8 @@ public class STPAPIClient: NSObject {
         var defaultHeaders: [String: String] = [:]
         defaultHeaders["X-Stripe-User-Agent"] = STPAPIClient.stripeUserAgentDetails(with: appInfo)
         var stripeVersion = APIVersion
-        if betas != nil && (betas?.count ?? 0) > 0 {
-            for betaHeader in betas ?? [] {
-                stripeVersion = stripeVersion + "; \(betaHeader)"
-            }
+        for betaHeader in betaStrings {
+            stripeVersion = stripeVersion + "; \(betaHeader)"
         }
         defaultHeaders["Stripe-Version"] = stripeVersion
         defaultHeaders["Stripe-Account"] = stripeAccount
