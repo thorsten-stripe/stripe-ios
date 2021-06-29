@@ -1246,21 +1246,23 @@ public class STPPaymentHandler: NSObject, SFSafariViewControllerDelegate, STPURL
                 doChallenge()
             }
         }
-
-        // Redirect to an app
-        // We don't want universal links to open up Safari, but we do want to allow custom URL schemes
-        var options: [UIApplication.OpenExternalURLOptionsKey: Any] = [:]
-        #if !targetEnvironment(macCatalyst)
-        if let scheme = url?.scheme, scheme == "http" || scheme == "https" {
-            options[UIApplication.OpenExternalURLOptionsKey.universalLinksOnly] = true
-        }
-        #endif
-
+        
+        
         // If we're simulating app-to-app redirects, if there's no native URL, we always want to redirect to another app.
         // Set a fake nativeURL.
         if simulateAppToAppRedirect && nativeURL == nil {
             url = fallbackURL
         }
+
+        // Redirect to an app
+        // We don't want universal links to open up Safari, but we do want to allow custom URL schemes
+        // But if simulate App to App Redirect is on, we *do* want them to open in Safari.
+        var options: [UIApplication.OpenExternalURLOptionsKey: Any] = [:]
+        #if !targetEnvironment(macCatalyst)
+        if let scheme = url?.scheme, scheme == "http" || scheme == "https", !simulateAppToAppRedirect {
+            options[UIApplication.OpenExternalURLOptionsKey.universalLinksOnly] = true
+        }
+        #endif
 
         // We don't check canOpenURL before opening the URL because that requires users to pre-register the custom URL schemes
         if let url = url {
